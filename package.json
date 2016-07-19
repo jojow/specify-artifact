@@ -1,0 +1,36 @@
+{
+  "name": "specify-artifact",
+  "version": "1.0.0",
+  "description": "Analyze an artifact to specify its properties such as config parameters etc.",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test/smoketest.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jojow/specify-artifact.git"
+  },
+  "keywords": [
+    "spec",
+    "executable",
+    "configuration",
+    "parameter",
+    "chef",
+    "docker"
+  ],
+  "author": "Johannes Wettinger <mail@jojow.de>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jojow/specify-artifact/issues"
+  },
+  "homepage": "https://github.com/jojow/specify-artifact#readme",
+  "dependencies": {
+    "async": "^2.0.0",
+    "decompress": "^4.0.0",
+    "download": "^5.0.2",
+    "fs-extra": "^0.30.0",
+    "got": "^6.3.0",
+    "lodash": "^4.13.1",
+    "shortid": "^2.2.6"
+  }
+}
