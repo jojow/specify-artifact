@@ -14,7 +14,7 @@ async.series([
       if (err) return done(err);
 
       console.log('artifact spec:', JSON.stringify(result.spec, null, 2));
-      console.log('cookbook dir:', result.dir);
+      console.log('cookbook path:', result.path);
 
       done();
     });
