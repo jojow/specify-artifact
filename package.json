@@ -4,7 +4,7 @@
   "description": "Analyze an artifact to specify its properties such as config parameters etc.",
   "main": "index.js",
   "scripts": {
-    "test": "node test/smoketest.js"
+    "test": "node test/smoketest-prepare.js && node test/smoketest-chef.js"
   },
   "repository": {
     "type": "git",

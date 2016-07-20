@@ -21,7 +21,7 @@ async.series([
 
         console.log('cookbook dependencies resolved');
 
-        done();
+        fs.remove(result.path, done);
       });
     });
   }
