@@ -1,0 +1,8 @@
+language: node_js
+node_js:
+- '4'
+deploy:
+  provider: npm
+  email: mail@jojow.de
+  api_key:
+    secure: PVH47qf6FmgCVHWZhGe7kBGZpBrlVVNa1m6okKIlFYz5lL43aF1wzVjD5k+pAsAyP4h/uVYgryGl96UmSlL03SSdT8LjMYtYbsA4M0DmLp1hZRqQX/KUxP4hyTi0iNM0K3YYSAFsHNG+W5x9NB7DekVFoxxVWQ57MFR75nTxGWXBX0Gxxabfd5stLzvFhKcpuUPJnk+XaG196J6Z5aFsk8ihwYLGf3RgbR/PNs+md63GMecnolrIB1BVvttJ4LltcmfCYpwYG35HVXroTnrRry1cDG5JiEq3ga7xivR9KjP/PChf9qFfbjNqp4vJPvHlRPHWIeh9wCa3p7WFvd1yeUDLySNb74OAhUHhSqk6+wHpmvPncBJlpBLbu/vxrM+RPn4LoDByaSYRAVBfbpr7K7rKvPFJGtJ/1BsXPfx2XBe5Kmz3W9NS0EMO+3klMYyP6Z+JdevkG+21q4E78sbYRFwOVmyInSTaihPvRd0J7F5CP0742gZ+N0kYLblytwLG0urScoJGva3/YtCjxayY1+Py0YU/0UZPRWb6opyS+Q/czXgEA5Wj4GEXv8e4EGmwzAsB+lC5TNU3RgWzf9YggO63R+U9uL/LUQWdIrrO+d0pWHwhOE6tED5BA8sBHcgEupreR7AdPTqHS3okEVWC1yMbl0Tr39FBT8Eb2h/yu9Y=
