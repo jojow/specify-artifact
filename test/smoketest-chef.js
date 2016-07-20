@@ -16,10 +16,10 @@ async.series([
       console.log('artifact spec:', JSON.stringify(result.spec, null, 2));
       console.log('cookbook path:', result.path);
 
-      chef.resolve(result, (err) => {
+      chef.fetchDependencies(result, (err, result) => {
         if (err) return done(err);
 
-        console.log('cookbook dependencies resolved');
+        console.log('cookbook dependencies fetched');
 
         fs.remove(result.path, done);
       });
