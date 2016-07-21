@@ -4,38 +4,36 @@ const path = require('path');
 const async = require('async');
 const fs = require('fs-extra');
 
-const chef = require('../lib/chef');
+const docker = require('../lib/docker');
 
 
 
 async.series([
   function(done) {
-    chef.specify('chefsupermarket:mysql:2.0.0', null, (err, result) => {
+    docker.specify('dockerhub:opentosca/winery', null, (err, result) => {
       if (err) return done(err);
 
       console.log('artifact spec:', JSON.stringify(result.spec, null, 2));
-      console.log('cookbook path:', result.path);
 
-      chef.fetchDependencies(result, (err, result) => {
+      docker.fetchDependencies(result, (err, result) => {
         if (err) return done(err);
 
-        console.log('dependencies fetched');
+        console.log('dependencies fetched and stored:', result.path);
 
         fs.remove(result.path, done);
       });
     });
   },
   function(done) {
-    chef.specify('https://supermarket.chef.io/cookbooks/apache2/versions/2.0.0/download', null, (err, result) => {
+    docker.specify('https://github.com/jojow/opentosca-dockerfiles::/winery', null, (err, result) => {
       if (err) return done(err);
 
       console.log('artifact spec:', JSON.stringify(result.spec, null, 2));
-      console.log('cookbook path:', result.path);
 
-      chef.fetchDependencies(result, (err, result) => {
+      docker.fetchDependencies(result, (err, result) => {
         if (err) return done(err);
 
-        console.log('dependencies fetched');
+        console.log('dependencies fetched and stored:', result.path);
 
         fs.remove(result.path, done);
       });
