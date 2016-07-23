@@ -2,7 +2,6 @@
 
 const path = require('path');
 const async = require('async');
-const fs = require('fs-extra');
 
 const chef = require('../lib/chef');
 
@@ -21,7 +20,7 @@ async.series([
 
         console.log('dependencies fetched');
 
-        fs.remove(result.path, done);
+        result.cleanup(done);
       });
     });
   },
@@ -37,7 +36,7 @@ async.series([
 
         console.log('dependencies fetched');
 
-        fs.remove(result.path, done);
+        result.cleanup(done);
       });
     });
   }

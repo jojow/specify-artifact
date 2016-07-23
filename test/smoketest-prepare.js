@@ -2,7 +2,6 @@
 
 const path = require('path');
 const async = require('async');
-const fs = require('fs-extra');
 
 const prepare = require('../lib/prepare');
 
@@ -15,7 +14,7 @@ async.series([
 
       console.log('remote extractable file:', output);
 
-      fs.remove(output.path, done);
+      output.cleanup(done);
     });
   },
   function(done) {
@@ -24,7 +23,7 @@ async.series([
 
       console.log('local dir:', output);
 
-      done();
+      output.cleanup(done);
     });
   },
   function(done) {
@@ -33,7 +32,7 @@ async.series([
 
       console.log('local extractable file:', output);
 
-      fs.remove(output.path, done);
+      output.cleanup(done);
     });
   },
   function(done) {
@@ -42,7 +41,7 @@ async.series([
 
       console.log('local non-extractable file:', output);
 
-      done();
+      output.cleanup(done);
     });
   },
   function(done) {
@@ -51,7 +50,7 @@ async.series([
 
       console.log('remote non-extractable file:', output);
 
-      fs.remove(output.path, done);
+      output.cleanup(done);
     });
   },
   function(done) {
@@ -60,7 +59,7 @@ async.series([
 
       console.log('remote repository:', output);
 
-      fs.remove(output.path, done);
+      output.cleanup(done);
     });
   }
 ], function(err) {

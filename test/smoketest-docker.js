@@ -2,7 +2,6 @@
 
 const path = require('path');
 const async = require('async');
-const fs = require('fs-extra');
 
 const docker = require('../lib/docker');
 
@@ -20,7 +19,7 @@ async.series([
 
         console.log('dependencies fetched and stored:', result.path);
 
-        fs.remove(result.path, done);
+        result.cleanup(done);
       });
     });
   },
@@ -35,7 +34,7 @@ async.series([
 
         console.log('dependencies fetched and stored:', result.path);
 
-        fs.remove(result.path, done);
+        result.cleanup(done);
       });
     });
   },
@@ -50,7 +49,7 @@ async.series([
 
         console.log('dependencies fetched and stored:', result.path);
 
-        fs.remove(result.path, done);
+        result.cleanup(done);
       });
     });
   }
