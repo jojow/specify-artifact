@@ -1,7 +1,10 @@
 'use strict'
 
+const fs = require('fs');
+const assert = require('assert');
 const path = require('path');
 const async = require('async');
+const _ = require('lodash');
 
 const prepare = require('../lib/prepare');
 
@@ -14,6 +17,10 @@ async.series([
 
       console.log('remote extractable file:', output);
 
+      assert.ok(output.type === 'dir');
+      assert.ok(fs.statSync(output.path).isDirectory());
+      assert.ok(_.includes(output.cleanupPaths, output.path));
+
       output.cleanup(done);
     });
   },
@@ -22,6 +29,10 @@ async.series([
       if (err) return done(err);
 
       console.log('local dir:', output);
+
+      assert.ok(output.type === 'dir');
+      assert.ok(fs.statSync(output.path).isDirectory());
+      assert.ok(_.isEmpty(output.cleanupPaths));
 
       output.cleanup(done);
     });
@@ -32,6 +43,10 @@ async.series([
 
       console.log('local extractable file:', output);
 
+      assert.ok(output.type === 'dir');
+      assert.ok(fs.statSync(output.path).isDirectory());
+      assert.ok(_.includes(output.cleanupPaths, output.path));
+
       output.cleanup(done);
     });
   },
@@ -40,6 +55,10 @@ async.series([
       if (err) return done(err);
 
       console.log('local non-extractable file:', output);
+
+      assert.ok(output.type === 'file');
+      assert.ok(fs.statSync(output.path).isFile());
+      assert.ok(_.size(output.cleanupPaths) === 1);
 
       output.cleanup(done);
     });
@@ -50,6 +69,10 @@ async.series([
 
       console.log('remote non-extractable file:', output);
 
+      assert.ok(output.type === 'file');
+      assert.ok(fs.statSync(output.path).isFile());
+      assert.ok(_.size(output.cleanupPaths) === 2);
+
       output.cleanup(done);
     });
   },
@@ -58,6 +81,10 @@ async.series([
       if (err) return done(err);
 
       console.log('remote repository:', output);
+
+      assert.ok(output.type === 'dir');
+      assert.ok(fs.statSync(output.path).isDirectory());
+      assert.ok(_.includes(output.cleanupPaths, output.path));
 
       output.cleanup(done);
     });
