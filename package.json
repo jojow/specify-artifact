@@ -1,6 +1,6 @@
 {
   "name": "specify-artifact",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Analyze an artifact to specify its properties such as config parameters etc.",
   "main": "index.js",
   "scripts": {
